@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Learn Comparative Adjectives 🌟</title>
+<style>
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Comic Sans MS', 'Tahoma', sans-serif;
+    background: linear-gradient(135deg, #FFE8CC 0%, #FFD6E8 50%, #D6E8FF 100%);
+    margin: 0;
+    padding: 24px;
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  .container { max-width: 660px; margin: 0 auto; width: 100%; }
+  h1 { text-align: center; color: #6B4EFF; font-size: 28px; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #444; margin-bottom: 28px; font-size: 15px; }
+  .card {
+    background: white; border-radius: 20px; padding: 26px; margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 3px solid #FFD6E8;
+  }
+  .card h2 { color: #FF6B9D; font-size: 20px; margin-top: 0; margin-bottom: 16px; }
+  .card h3 { color: #6B4EFF; font-size: 16px; margin: 18px 0 8px; }
+  .card p { font-size: 15px; margin: 10px 0; color: #333; }
+  .tableScroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 14px 0 18px; border-radius: 10px; }
+  table { width: 100%; min-width: 320px; border-collapse: collapse; margin: 0; }
+  td, th { padding: 10px; border-bottom: 2px solid #f0f0f0; text-align: left; font-size: 14px; white-space: nowrap; }
+  th { color: #6B4EFF; }
+
+  @media (max-width: 480px) {
+    body { padding: 14px; }
+    h1 { font-size: 22px; }
+    .subtitle { font-size: 13.5px; margin-bottom: 20px; }
+    .card { padding: 16px; border-radius: 16px; margin-bottom: 16px; }
+    .card h2 { font-size: 18px; }
+    .card h3 { font-size: 15px; }
+    .card p { font-size: 14px; }
+    td, th { padding: 8px; font-size: 13px; white-space: normal; }
+    .formula { font-size: 14px; padding: 12px; }
+    .note { font-size: 13px; padding: 10px 12px; }
+    .quizWrap { padding: 14px; }
+    .qtext { font-size: 15px; }
+    .optBtn, .inp { padding: 14px 12px; font-size: 15px; }
+    .checkBtn, .nextBtn, .restartBtn { width: 100%; padding: 13px; }
+    .nextBtn { float: none; margin-top: 10px; }
+    .scoreRow { flex-direction: column; align-items: stretch; gap: 8px; }
+    .scoreText { text-align: center; }
+  }
+  .note {
+    background: #FFF9E8; border-left: 4px solid #FFC94A; border-radius: 10px;
+    padding: 12px 14px; font-size: 13.5px; color: #6b5b1e; margin: 12px 0;
+  }
+  .formula {
+    background: #EAF7EC; border: 2px dashed #6BCB77; border-radius: 14px;
+    padding: 14px 16px; font-size: 15px; text-align: center; margin: 14px 0; color: #2E9E4B; font-weight: bold;
+  }
+  .keyword {
+    display: inline-block; background: #FFF3C4; color: #8a6d00;
+    padding: 6px 14px; border-radius: 20px; margin: 5px; font-size: 13.5px; font-weight: bold;
+  }
+  .quizWrap {
+    background: #F5FAFF; border-radius: 16px; padding: 22px; margin-top: 20px;
+    border: 3px dashed #C4E8FF;
+  }
+  .quizTitle { font-weight: bold; color: #6B4EFF; font-size: 15px; margin-bottom: 12px; }
+  .progress { text-align:center; font-size:13px; color:#555; margin-bottom:8px; }
+  .barOuter { height:8px; background:#eee; border-radius:10px; overflow:hidden; margin-bottom:18px; }
+  .barInner { height:100%; width:0%; background:#6BCB77; transition:width .3s; }
+  .qtext { font-size:16px; margin-bottom:16px; color:#333; font-weight:bold; line-height:1.5; }
+  .optBtn {
+    display:block; width:100%; padding:13px; margin-bottom:11px; border-radius:14px;
+    border:3px solid #C4E8FF; background:white; font-size:15px; cursor:pointer; font-family:inherit;
+  }
+  .optBtn:hover { background:#E0F0FF; }
+  .optBtn:disabled { opacity:0.6; cursor:default; }
+  .inp {
+    width:100%; padding:13px; font-size:16px; border-radius:14px;
+    border:3px solid #C4E8FF; margin-bottom:11px; font-family:inherit;
+  }
+  .checkBtn, .nextBtn, .restartBtn {
+    padding:11px 20px; border-radius:14px; border:none; background:#6B4EFF;
+    color:white; font-size:15px; font-weight:bold; cursor:pointer; font-family:inherit;
+  }
+  .nextBtn { background:#FF6B9D; float:right; }
+  .feedback { margin-top:12px; font-size:15px; font-weight:bold; min-height:22px; line-height:1.5; }
+  .correct { color:#2E9E4B; }
+  .wrong { color:#E24B4A; }
+  .scoreRow { display:flex; justify-content:space-between; align-items:center; margin-top:18px; }
+  .scoreText { font-size:14px; color:#555; }
+  .finalScreen { display:none; text-align:center; padding:20px 0; }
+  .finalEmoji { font-size:46px; }
+  .finalMsg { font-size:20px; font-weight:bold; color:#6B4EFF; margin:10px 0; }
+  .finalScoreText { font-size:14px; color:#555; margin-bottom:16px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🌟 Let's Learn Comparative Adjectives! 🌟</h1>
+  <p class="subtitle">A full lesson with fun questions after every section, plus a final challenge! 🎈</p>
+
+  <div class="card">
+    <h2>🏗️ Formation</h2>
+    <p>We use comparative adjectives to compare <b>two</b> people, animals, or things.</p>
+
+    <div class="formula">short adjective + <span style="color:#FF6B9D;">er</span> + than</div>
+
+    <p>Example: Ali is <b>taller than</b> Omar. 🧒</p>
+
+    <h3>Short adjectives</h3>
+    <p>A short adjective has only <b>one syllable</b> (one "beat" when you say it): short, fast, tall, clean, nice, big, hot ...</p>
+
+    <h3>The 4 spelling rules</h3>
+
+    <p><b>1) Most short adjectives</b> → just add <b>-er</b> then <b>than</b></p>
+    <div class="tableScroll"><table>
+      <tr><th>Adjective</th><th>Comparative</th></tr>
+      <tr><td>short</td><td>shorter than</td></tr>
+      <tr><td>clean</td><td>cleaner than</td></tr>
+      <tr><td>fast</td><td>faster than</td></tr>
+      <tr><td>tall</td><td>taller than</td></tr>
+    </table></div>
+    <p>Example: My room is cleaner than my sister's room. 🛏️</p>
+
+    <p><b>2) Adjectives ending in "e"</b> → just add <b>-r</b> then <b>than</b></p>
+    <div class="tableScroll"><table>
+      <tr><th>Adjective</th><th>Comparative</th></tr>
+      <tr><td>safe</td><td>safer than</td></tr>
+      <tr><td>nice</td><td>nicer than</td></tr>
+    </table></div>
+    <p>Example: Cats are safer than lions. 🐱</p>
+
+    <p><b>3) Adjectives ending in a consonant + "y"</b> → remove the y, add <b>-ier</b> then <b>than</b></p>
+    <div class="tableScroll"><table>
+      <tr><th>Adjective</th><th>Comparative</th></tr>
+      <tr><td>heavy</td><td>heavier than</td></tr>
+      <tr><td>healthy</td><td>healthier than</td></tr>
+    </table></div>
+    <p>Example: Fruits are healthier than sweets. 🍎</p>
+
+    <p><b>4) One-syllable adjectives ending in one vowel + one consonant</b> → double the consonant, add <b>-er</b> then <b>than</b></p>
+    <div class="tableScroll"><table>
+      <tr><th>Adjective</th><th>Comparative</th></tr>
+      <tr><td>big</td><td>bigger than</td></tr>
+      <tr><td>hot</td><td>hotter than</td></tr>
+    </table></div>
+    <p>Example: Summer is hotter than spring. ☀️</p>
+
+    <div class="note">
+      📌 A quick way to remember: look at the LAST letters of the adjective to choose the right rule — plain consonant → -er, silent e → -r, consonant+y → -ier, vowel+consonant → double the consonant + -er.
+    </div>
+
+    <div id="quiz1" class="quizWrap"></div>
+  </div>
+
+  <div class="card">
+    <h2>🎯 Usage</h2>
+    <p>We use comparative adjectives whenever we compare <b>two</b> things, people, or animals — never just one, and never three or more (that would need a superlative like "the biggest").</p>
+    <p>Example: The elephant is bigger than the dog. 🐘🐶</p>
+    <p>Example: The rabbit is faster than the turtle. 🐇🐢</p>
+    <div id="quiz2" class="quizWrap"></div>
+  </div>
+
+  <div class="card">
+    <h2>🔑 Key Word</h2>
+    <p>The word <b>than</b> almost always appears after a comparative adjective, right before the second thing being compared.</p>
+    <span class="keyword">than</span>
+    <p>Example: Ahmed is shorter <b>than</b> Amr.</p>
+    <div id="quiz3" class="quizWrap"></div>
+  </div>
+
+  <div class="card">
+    <h2>📝 Exercise 1: Choose the correct answer (10 questions)</h2>
+    <div id="quiz6" class="quizWrap"></div>
+  </div>
+
+  <div class="card">
+    <h2>🔍 Exercise 2: Correct the mistake (10 questions)</h2>
+    <div id="quiz7" class="quizWrap"></div>
+  </div>
+</div>
+
+<script>
+function createQuiz(containerId, questions){
+  const root = document.getElementById(containerId);
+  let i=0, score=0;
+
+  const title = document.createElement('div');
+  title.className='quizTitle';
+  title.textContent='Try it yourself 👇';
+  const progress = document.createElement('div'); progress.className='progress';
+  const barOuter = document.createElement('div'); barOuter.className='barOuter';
+  const barInner = document.createElement('div'); barInner.className='barInner';
+  barOuter.appendChild(barInner);
+  const qtext = document.createElement('div'); qtext.className='qtext';
+  const answerArea = document.createElement('div');
+  const feedback = document.createElement('div'); feedback.className='feedback';
+  const scoreRow = document.createElement('div'); scoreRow.className='scoreRow';
+  const scoreText = document.createElement('div'); scoreText.className='scoreText';
+  const scoreSpan = document.createElement('span'); scoreSpan.textContent='0';
+  scoreText.appendChild(document.createTextNode('Score: '));
+  scoreText.appendChild(scoreSpan);
+  scoreText.appendChild(document.createTextNode(' / ' + questions.length));
+  const nextBtn = document.createElement('button'); nextBtn.className='nextBtn'; nextBtn.textContent='Next ➡️'; nextBtn.style.display='none';
+  scoreRow.appendChild(scoreText); scoreRow.appendChild(nextBtn);
+
+  const finalScreen = document.createElement('div'); finalScreen.className='finalScreen';
+  const finalEmoji = document.createElement('div'); finalEmoji.className='finalEmoji';
+  const finalMsg = document.createElement('div'); finalMsg.className='finalMsg';
+  const finalScoreText = document.createElement('div'); finalScoreText.className='finalScoreText';
+  const restartBtn = document.createElement('button'); restartBtn.className='restartBtn'; restartBtn.textContent='Play again 🔄';
+  finalScreen.appendChild(finalEmoji); finalScreen.appendChild(finalMsg);
+  finalScreen.appendChild(finalScoreText); finalScreen.appendChild(restartBtn);
+
+  root.appendChild(title); root.appendChild(progress); root.appendChild(barOuter);
+  root.appendChild(qtext); root.appendChild(answerArea); root.appendChild(feedback);
+  root.appendChild(scoreRow); root.appendChild(finalScreen);
+
+  function render(){
+    const item = questions[i];
+    progress.textContent = 'Question ' + (i+1) + ' of ' + questions.length;
+    barInner.style.width = ((i+1)/questions.length*100) + '%';
+    qtext.textContent = item.q;
+    feedback.textContent=''; feedback.className='feedback';
+    nextBtn.style.display='none';
+    answerArea.innerHTML='';
+    if(item.type==='type'){
+      const input=document.createElement('input');
+      input.className='inp'; input.placeholder='Type your answer here \u270f\ufe0f';
+      const btn=document.createElement('button');
+      btn.className='checkBtn'; btn.textContent='Check \u2714\ufe0f';
+      btn.onclick=function(){ check(input.value.trim(), [input, btn]); };
+      answerArea.appendChild(input); answerArea.appendChild(btn);
+    } else {
+      const btns=[];
+      item.opts.forEach(function(opt){
+        const b=document.createElement('button');
+        b.className='optBtn'; b.textContent=opt;
+        b.onclick=function(){ check(opt, btns); };
+        btns.push(b);
+        answerArea.appendChild(b);
+      });
+    }
+  }
+
+  function check(val, elsToDisable){
+    const item = questions[i];
+    if(!val){
+      feedback.className='feedback wrong';
+      feedback.textContent='Please write or choose an answer first \ud83d\ude0a';
+      return;
+    }
+    const correct = val.toLowerCase().trim() === item.a.toLowerCase().trim();
+    if(correct){
+      score++; scoreSpan.textContent=score;
+      feedback.className='feedback correct';
+      feedback.textContent='Correct! Well done! \ud83c\udf89';
+    } else {
+      feedback.className='feedback wrong';
+      feedback.textContent='Not quite! The correct answer is: ' + item.a + (item.hint?(' \u2014 '+item.hint):'') + ' \ud83d\udca1';
+    }
+    nextBtn.style.display='inline-block';
+    elsToDisable.forEach(function(el){ el.disabled=true; });
+  }
+
+  nextBtn.onclick=function(){
+    i++;
+    if(i>=questions.length){
+      progress.style.display='none'; barOuter.style.display='none';
+      qtext.style.display='none'; answerArea.style.display='none';
+      feedback.style.display='none'; scoreRow.style.display='none';
+      finalScreen.style.display='block';
+      finalEmoji.textContent = score >= Math.ceil(questions.length*0.7) ? '\ud83c\udfc6' : '\ud83c\udf08';
+      finalMsg.textContent = score >= Math.ceil(questions.length*0.7) ? "Amazing! You are a superstar!" : "Good try! Let's practice a bit more.";
+      finalScoreText.textContent = 'Your score: ' + score + ' out of ' + questions.length;
+    } else { render(); }
+  };
+
+  restartBtn.onclick=function(){
+    i=0; score=0; scoreSpan.textContent=0;
+    finalScreen.style.display='none';
+    progress.style.display='block'; barOuter.style.display='block';
+    qtext.style.display='block'; answerArea.style.display='block';
+    feedback.style.display='block'; scoreRow.style.display='flex';
+    render();
+  };
+
+  render();
+}
+
+createQuiz('quiz1', [
+  {type:'choice', q:'Choose the correct form: fast \u2192 ?', opts:['faster than','fastier than'], a:'faster than'},
+  {type:'choice', q:'Choose the correct form: nice \u2192 ? (ends in e)', opts:['nicer than','niceer than'], a:'nicer than'},
+  {type:'choice', q:'Choose the correct form: heavy \u2192 ? (ends in consonant + y)', opts:['heavyer than','heavier than'], a:'heavier than'},
+  {type:'choice', q:'Choose the correct form: big \u2192 ? (short vowel + consonant)', opts:['biger than','bigger than'], a:'bigger than'}
+]);
+
+createQuiz('quiz2', [
+  {type:'choice', q:'Which sentence correctly compares two animals?', opts:['The elephant is bigger than the dog.','The elephant is big.'], a:'The elephant is bigger than the dog.'},
+  {type:'type', q:'The rabbit is ___ (fast) than the turtle. \ud83d\udc07', a:'faster'},
+  {type:'type', q:'My bag is ___ (heavy) than your bag. \ud83c\udf92', a:'heavier'}
+]);
+
+createQuiz('quiz3', [
+  {type:'type', q:'Ahmed is shorter ___ Amr. (write the missing key word)', a:'than'},
+  {type:'choice', q:'Choose the correct sentence:', opts:['Bears are bigger dogs.','Bears are bigger than dogs.'], a:'Bears are bigger than dogs.'}
+]);
+
+createQuiz('quiz6', [
+  {type:'choice', q:'1) My grandfather is ___ than my grandmother.', opts:['old','older'], a:'older'},
+  {type:'choice', q:'2) The bus is ___ than the train.', opts:['slow','slower'], a:'slower'},
+  {type:'choice', q:'3) Adam is ___ than his sister.', opts:['brave','braver'], a:'braver'},
+  {type:'choice', q:'4) The piano is ___ than the flute.', opts:['loud','louder'], a:'louder'},
+  {type:'choice', q:'5) Ali is ___ than Omar. (tall)', opts:['taller','tallier'], a:'taller'},
+  {type:'choice', q:'6) The elephant is ___ than the dog. (big)', opts:['biger','bigger'], a:'bigger'},
+  {type:'choice', q:'7) My room is ___ than my sister\u2019s room. (clean)', opts:['cleaner','cleanner'], a:'cleaner'},
+  {type:'choice', q:'8) Cats are ___ than lions. (safe)', opts:['safer','safeer'], a:'safer'},
+  {type:'choice', q:'9) Summer is ___ than spring. (hot)', opts:['hoter','hotter'], a:'hotter'},
+  {type:'choice', q:'10) Fruits are ___ than sweets. (healthy)', opts:['healthyer','healthier'], a:'healthier'}
+]);
+
+createQuiz('quiz7', [
+  {type:'choice', q:'1) Which sentence is correct?', opts:['Ahmed is shortder than Amr.','Ahmed is shorter than Amr.'], a:'Ahmed is shorter than Amr.'},
+  {type:'choice', q:'2) Which sentence is correct?', opts:['The red dress is niceer than the blue one.','The red dress is nicer than the blue one.'], a:'The red dress is nicer than the blue one.'},
+  {type:'choice', q:'3) Which sentence is correct?', opts:['My bag is heavyer than your bag.','My bag is heavier than your bag.'], a:'My bag is heavier than your bag.'},
+  {type:'choice', q:'4) Which sentence is correct?', opts:['Bears are biger than dogs.','Bears are bigger than dogs.'], a:'Bears are bigger than dogs.'},
+  {type:'choice', q:'5) Which sentence is correct?', opts:['Fruits are healthier then sweets.','Fruits are healthier than sweets.'], a:'Fruits are healthier than sweets.'},
+  {type:'choice', q:'6) Which sentence is correct?', opts:['The lion is stronger then the cat.','The lion is stronger than the cat.'], a:'The lion is stronger than the cat.'},
+  {type:'choice', q:'7) Which sentence is correct?', opts:['She is more taller than him.','She is taller than him.'], a:'She is taller than him.'},
+  {type:'choice', q:'8) Which sentence is correct?', opts:['This box is heavyier than that one.','This box is heavier than that one.'], a:'This box is heavier than that one.'},
+  {type:'choice', q:'9) Which sentence is correct?', opts:['He is fastter than me.','He is faster than me.'], a:'He is faster than me.'},
+  {type:'choice', q:'10) Which sentence is correct?', opts:['The elephant is bigger the dog.','The elephant is bigger than the dog.'], a:'The elephant is bigger than the dog.'}
+]);
+</script>
+</body>
+</html>
